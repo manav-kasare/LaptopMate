@@ -1,0 +1,26 @@
+﻿@model List<LaptopMate.Models.Laptop>
+
+<h1>Welcome to LaptopMate</h1>
+<br/>
+
+<div class="row">
+    @foreach (var laptop in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="@laptop.ImageUrl" class="card-img-top p-5" alt="@laptop.Name">
+                <div class="card-body">
+                    <h5 class="card-title">@laptop.Name</h5>
+                    <p class="card-text text-nowrap overflow-hidden">@laptop.Description</p>
+                    <p class="card-text">Price: $@laptop.Price</p>
+                    <!-- Add a form to send POST request to AddToCart action -->
+                    <form method="post" action="@Url.Action("AddToCart", "Home")">
+                        <input type="hidden" name="laptopId" value="@laptop.Id" />
+                        <input type="hidden" name="quantity" value="1" />
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>
