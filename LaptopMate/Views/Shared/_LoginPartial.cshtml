@@ -5,9 +5,6 @@
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Admin Login">@User.Identity?.Name</a>
-        </li>
     <li class="nav-item">
        <a class="nav-link text-muted" asp-area="" asp-controller="Home" asp-action="Cart" title="Cart">
             <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" style="height: 24px; width: 24px;" />
