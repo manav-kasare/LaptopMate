@@ -22,11 +22,36 @@ namespace LaptopMate.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            List<Laptop> laptops = _context.Laptops.ToList();
-            return View(laptops);
+            var laptops = await _context.Laptops.ToListAsync(); // Get all laptops
+            var laptopQuantities = new Dictionary<int, int>();
+
+            if (User.Identity.IsAuthenticated)
+            {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var userCart = await _context.Carts
+                    .Include(c => c.CartItems)
+                    .FirstOrDefaultAsync(c => c.UserId == userId);
+
+                if (userCart != null)
+                {
+                    foreach (var cartItem in userCart.CartItems)
+                    {
+                        laptopQuantities[cartItem.LaptopId] = cartItem.Quantity;
+                    }
+                }
+            }
+
+            var viewModel = new LaptopViewModel
+            {
+                Laptops = laptops,
+                LaptopQuantities = laptopQuantities
+            };
+
+            return View(viewModel);
         }
+
 
         public async Task<IActionResult> Cart()
         {

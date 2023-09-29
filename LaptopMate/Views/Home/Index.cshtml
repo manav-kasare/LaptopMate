@@ -1,14 +1,14 @@
-﻿@model List<LaptopMate.Models.Laptop>
+﻿@model LaptopMate.Models.LaptopViewModel
 
-<h1>Welcome to LaptopMate</h1>
+<h1>Welcome to LaptopMate!</h1>
 <br/>
 
 <div class="row">
-    @foreach (var laptop in Model)
+    @foreach (var laptop in Model.Laptops)
     {
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="@laptop.ImageUrl" class="card-img-top p-5" alt="@laptop.Name">
+        <div class="col-md-3 mb-4">
+            <div class="card border-0 box-shadow" style="background: #ffffff ">
+                <img src="@laptop.ImageUrl" class="card-img-top p-0" alt="@laptop.Name">
                 <div class="card-body">
                     <h5 class="card-title">@laptop.Name</h5>
                     <p class="card-text text-nowrap overflow-hidden">@laptop.Description</p>
@@ -17,7 +17,25 @@
                     <form method="post" action="@Url.Action("AddToCart", "Home")">
                         <input type="hidden" name="laptopId" value="@laptop.Id" />
                         <input type="hidden" name="quantity" value="1" />
-                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                        <button type="submit" class="btn btn-primary">
+                            @{
+                                var laptopId = laptop.Id;
+                                var quantity = Model.LaptopQuantities.ContainsKey(laptopId)
+                                ? Model.LaptopQuantities[laptopId]
+                                : 0;
+                            }
+                          
+                            <span>Add to Cart</span>
+
+                           
+                        </button>
+                        @if (quantity > 0)
+                        {
+                            <div style="position: absolute; right: 25px; bottom: 7px;">
+                                <p style="color: green; font-weight: bold">x @(quantity) in Cart</p>
+                            </div>
+                        }
+
                     </form>
                 </div>
             </div>
