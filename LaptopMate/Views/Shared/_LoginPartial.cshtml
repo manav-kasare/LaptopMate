@@ -5,14 +5,26 @@
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
-    <li class="nav-item">
-       <a class="nav-link text-muted" asp-area="" asp-controller="Home" asp-action="Cart" title="Cart">
-            <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" style="height: 24px; width: 24px;" />
-       </a>
-    </li>
-    <li class="nav-item">
-        <a  class="nav-link text-muted" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity?.Name</a>
-    </li>
+       
+        @if(User.IsInRole("Admin"))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Admin Panel</a>
+            </li>
+
+        } else
+        {
+            <li class="nav-item">
+                <a class="nav-link text-muted" asp-area="" asp-controller="Home" asp-action="Cart" title="Cart">
+                    <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" style="height: 24px; width: 24px;" />
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity?.Name</a>
+            </li>
+        }
+
+      
     <li class="nav-item">
         <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
             <button  type="submit" class="nav-link btn btn-link text-danger">Logout</button>
