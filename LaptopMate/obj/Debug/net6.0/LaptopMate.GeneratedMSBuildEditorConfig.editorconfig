@@ -16,12 +16,12 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Manav Kasare\Source\Repos\LaptopMate\LaptopMate
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Manav Kasare/Source/Repos/LaptopMate/LaptopMate/Areas/Admin/Pages/AdminLogin.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cUGFnZXNcQWRtaW5Mb2dpbi5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Manav Kasare/Source/Repos/LaptopMate/LaptopMate/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Manav Kasare/Source/Repos/LaptopMate/LaptopMate/Views/AdminLogin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5Mb2dpblxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Manav Kasare/Source/Repos/LaptopMate/LaptopMate/Views/Admin/Create.cshtml]

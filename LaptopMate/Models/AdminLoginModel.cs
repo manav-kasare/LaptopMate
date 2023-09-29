@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace LaptopMate.Areas.Admin.Models
+namespace LaptopMate.Models
 {
     public class AdminLoginModel
     {

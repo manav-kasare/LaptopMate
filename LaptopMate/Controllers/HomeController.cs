@@ -27,6 +27,7 @@ namespace LaptopMate.Controllers
             List<Laptop> laptops = _context.Laptops.ToList();
             return View(laptops);
         }
+
         public async Task<IActionResult> Cart()
         {
             // Get the current user's ID
